@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades</title>
+</head>
+<body bgcolor="green">
+    <h1>Actividades</h1>
+    {% for actividad in actividades %}
+    <ul>
+        <li>
+        {{actividad.id}} {{actividad.nombre}} {{actividad.comision}}
+        </li>
+    </ul>
+    {% endfor %}
+</body>
+</html>
