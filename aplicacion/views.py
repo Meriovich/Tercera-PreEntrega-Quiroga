@@ -10,8 +10,8 @@ def usuarios(request):
     return render(request, "aplicacion/usuarios.html")
 
 def actividades(request):
-    ctx = {"actividades": Actividad.objects.all() }
-    return render(request, "aplicacion/actividades.html")
+    ctx = {"actividades": Actividad.objects.all()}
+    return render(request, "aplicacion/actividades.html", ctx)
 
 def profesores(request):
     return render(request, "aplicacion/profesores.html")
