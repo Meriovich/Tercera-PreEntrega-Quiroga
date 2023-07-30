@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Actividad(models.Model):
     nombre = models.CharField(max_length=50)
-    comision = models.IntegerField()
+    comision = models.IntegerField(null=False, blank=False)
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=50)
