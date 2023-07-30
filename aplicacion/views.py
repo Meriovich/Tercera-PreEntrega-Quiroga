@@ -13,5 +13,5 @@ def actividades(request):
     ctx = {"actividades": Actividad.objects.all()}
     return render(request, "aplicacion/actividades.html", ctx)
 
-def profesores(request):
-    return render(request, "aplicacion/profesores.html")
+def staff(request):
+    return render(request, "aplicacion/staff.html")
