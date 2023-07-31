@@ -1,0 +1,27 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block header %}
+Usuario
+{% endblock header %}
+{% block content %}
+    {% for actividad in actividades %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellido}}</td>
+                <td>{{usuario.email}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

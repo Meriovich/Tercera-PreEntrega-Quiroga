@@ -13,5 +13,6 @@ urlpatterns = [
     path('buscar_comision/', buscarComision, name="buscar_comision"),   
     path('buscar2/', buscar2, name="buscar2"),
 
-    path('buscar_staff/', buscarStaff, name="buscar_staff"), 
+    path('buscarStaff/', buscarStaff, name="buscarStaff"), 
+    path('buscarUsuario/', buscarUsuario, name="buscarUsuario"), 
 ]

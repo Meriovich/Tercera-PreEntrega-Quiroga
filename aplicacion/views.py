@@ -50,4 +50,7 @@ def buscar2(request):
     return HttpResponse("No se ingresaron datos para buscar")
 
 def buscarStaff(request):
-    return render(request, "aplicacion/buscar_staff.html")
+    return render(request, "aplicacion/buscarStaff.html")
+
+def buscarUsuario(request):
+    return render(request, "aplicacion/buscarUsuario.html")
