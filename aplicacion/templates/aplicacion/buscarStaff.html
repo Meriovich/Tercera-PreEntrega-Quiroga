@@ -6,9 +6,9 @@
     <title>Buscar staff</title>
 </head>
 <body>
-    <form action="/aplicacion/buscar2" method="get">
+    <form action="/aplicacion/buscar_staff" method="get">
         {% csrf_token %}
-        <input type="text" name="apellido">
+        <input type="text" name="apellido" email="email">
         <input type="submit" value="Buscar">
     </form>
 </body>

@@ -48,3 +48,6 @@ def buscar2(request):
                       "aplicacion/resultadosComision.html",
                       {"comision": comision, "actividades":actividades})
     return HttpResponse("No se ingresaron datos para buscar")
+
+def buscarStaff(request):
+    return render(request, "aplicacion/buscar_staff.html")
