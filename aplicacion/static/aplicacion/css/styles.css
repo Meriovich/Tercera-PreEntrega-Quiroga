@@ -5557,7 +5557,7 @@ textarea.form-control-lg {
   line-break: auto;
   font-size: var(--bs-tooltip-font-size);
   word-wrap: break-word;
-  opacity: 0;
+  opacity: 1;
 }
 .tooltip.show {
   opacity: var(--bs-tooltip-opacity);
@@ -10849,12 +10849,10 @@ header.masthead {
 header.masthead:before {
   content: "";
   position: absolute;
-  background-color: #1c375e;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0.5;
 }
 header.masthead h1, header.masthead .h1 {
   font-size: 2rem;
