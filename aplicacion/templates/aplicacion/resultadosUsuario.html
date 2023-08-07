@@ -1,27 +1,31 @@
 {% extends 'aplicacion/base.html' %}
 {% load static %}
 {% block header %}
-Usuario
+Usuarios
 {% endblock header %}
 {% block content %}
-    {% for actividad in actividades %}
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>email</th>
+                <th>Email</th>
             </tr>
         </thead>
         <tbody>
+            {% for usuario in resultados_usuarios %}
             <tr>
                 <td>{{usuario.id}}</td>
                 <td>{{usuario.nombre}}</td>
                 <td>{{usuario.apellido}}</td>
                 <td>{{usuario.email}}</td>
             </tr>
-        {% endfor %}
+            {% empty %}
+            <tr>
+                <td colspan="4">No se encontraron resultados de usuarios.</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock content %}

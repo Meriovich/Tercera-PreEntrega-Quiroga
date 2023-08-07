@@ -50,7 +50,23 @@ def buscar2(request):
     return HttpResponse("No se ingresaron datos para buscar")
 
 def buscarStaff(request):
-    return render(request, "aplicacion/buscarStaff.html")
+    if 'staff' in request.GET:
+        staff_query = request.GET['staff']
+        resultados_staff = Staff.objects.filter(apellido__icontains=staff_query)
+        return render(request, "aplicacion/resultados_staff.html", {
+            "staff_query": staff_query,
+            "resultados_staff": resultados_staff,
+        })
+    return HttpResponse("No se ingresaron datos para buscar")
 
 def buscarUsuario(request):
-    return render(request, "aplicacion/buscarUsuario.html")
+    if 'usuario' in request.GET:
+        usuario_query = request.GET['usuario']
+        resultados_usuarios = Usuario.objects.filter(apellido__icontains=usuario_query)
+
+        return render(request, "aplicacion/resultados_usuarios.html", {
+            "usuario_query": usuario_query,
+            "resultados_usuarios": resultados_usuarios,
+        })
+
+    return HttpResponse("No se ingresaron datos para buscar")

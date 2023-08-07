@@ -4,7 +4,6 @@
 Staff
 {% endblock header %}
 {% block content %}
-    {% for actividad in actividades %}
     <table class="table">
         <thead>
             <tr>
@@ -15,11 +14,16 @@ Staff
             </tr>
         </thead>
         <tbody>
+            {% for actividad in actividades %}
             <tr>
                 <td>{{staff.id}}</td>
                 <td>{{staff.nombre}}</td>
                 <td>{{staff.apellido}}</td>
                 <td>{{staff.email}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No se encontraron resultados de staff.</td>
             </tr>
         {% endfor %}
         </tbody>
