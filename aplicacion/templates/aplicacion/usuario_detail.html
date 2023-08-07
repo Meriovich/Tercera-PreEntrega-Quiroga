@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalle de Usuario: {{ object.nombre }}</h1>
+  <p>Correo: {{ object.correo }}</p>
+  <p>Edad: {{ object.edad }}</p>
+  <p><a href="{% url 'actualizar_usuario' object.pk %}">Actualizar</a></p>
+  <p><a href="{% url 'eliminar_usuario' object.pk %}">Eliminar</a></p>
+{% endblock %}

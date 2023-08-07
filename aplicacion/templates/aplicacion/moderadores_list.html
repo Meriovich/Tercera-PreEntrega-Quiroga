@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Lista de Moderadores</h1>
+  <ul>
+    {% for moderador in object_list %}
+      <li><a href="{% url 'detalle_moderador' moderador.pk %}">{{ moderador.nombre }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

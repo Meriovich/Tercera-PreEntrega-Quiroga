@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalle de Juego: {{ object.nombre }}</h1>
+  <p>Género: {{ object.genero }}</p>
+  <p>Plataforma: {{ object.plataforma }}</p>
+  <p>Desarrollador: {{ object.desarrollador }}</p>
+  <p><a href="{% url 'actualizar_juego' object.pk %}">Actualizar</a></p>
+  <p><a href="{% url 'eliminar_juego' object.pk %}">Eliminar</a></p>
+{% endblock %}

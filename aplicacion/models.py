@@ -1,22 +1,34 @@
 from django.db import models
 
 # Create your models here.
-class Actividad(models.Model):
-    nombre = models.CharField(max_length=50)
-    comision = models.IntegerField(null=False, blank=False)
-
 class Usuario(models.Model):
     nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    email = models.EmailField()
+    correo = models.EmailField(max_length=100)
+    edad = models.IntegerField()
 
-    def __str__(self):
-        return f"{self.apellido}, {self.nombre}"
-
-class Staff(models.Model):
+class Moderador(models.Model):
     nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    email = models.EmailField()
+    correo = models.EmailField(max_length=100)
+    area_responsabilidad = models.CharField(max_length=100)
 
-    def __str__(self):
-        return f"{self.apellido}, {self.nombre}"
+class Juego(models.Model):
+    nombre = models.CharField(max_length=50)
+    genero = models.CharField(max_length=50)
+    plataforma = models.CharField(max_length=50)
+
+from django import forms
+
+class UsuarioForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['nombre', 'correo', 'edad']
+
+class ModeradorForm(forms.ModelForm):
+    class Meta:
+        model = Moderador
+        fields = ['nombre', 'correo', 'area_responsabilidad']
+
+class JuegoForm(forms.ModelForm):
+    class Meta:
+        model = Juego
+        fields = ['nombre', 'genero', 'plataforma']

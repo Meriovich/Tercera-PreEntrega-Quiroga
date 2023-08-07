@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalle de Moderador: {{ object.nombre }}</h1>
+  <p>Correo: {{ object.correo }}</p>
+  <p>Área de Responsabilidad: {{ object.area_responsabilidad }}</p>
+  <p><a href="{% url 'actualizar_moderador' object.pk %}">Actualizar</a></p>
+  <p><a href="{% url 'eliminar_moderador' object.pk %}">Eliminar</a></p>
+{% endblock %}

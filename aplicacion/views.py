@@ -1,72 +1,76 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import *
-from .forms import *
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Usuario, Moderador, Juego
+from .forms import UsuarioForm, ModeradorForm, JuegoForm
 
-# Create your views here.
-def index(request):
-    return render(request, "aplicacion/base.html")
+class UsuarioListView(ListView):
+    model = Usuario
+    template_name = 'usuarios/usuarios_list.html'
 
-def usuarios(request):
-    return render(request, "aplicacion/usuarios.html")
+class UsuarioDetailView(DetailView):
+    model = Usuario
+    template_name = 'usuarios/usuario_detail.html'
 
-def actividades(request):
-    ctx = {"actividades": Actividad.objects.all()}
-    return render(request, "aplicacion/actividades.html", ctx)
+class UsuarioCreateView(CreateView):
+    model = Usuario
+    form_class = UsuarioForm
+    template_name = 'usuarios/usuario_form.html'
 
-def actividadForm(request):
-    if request.method == "POST":
-        actividad = Actividad(nombre=request.POST['nombre'], comision=request.POST['comision'])
-        actividad.save()
-        return HttpResponse("Se aplicó la solicitud exitosamente!")
-    return render(request, "aplicacion/actividadForm.html")
+class UsuarioUpdateView(UpdateView):
+    model = Usuario
+    form_class = UsuarioForm
+    template_name = 'usuarios/usuario_form.html'
 
-def ActividadForm2(request):
-    if request.method == "POST":
-        miForm = ActivdadForm(request.POST)
-        if miForm.is_valid:
-            informacion = miForm.cleaned_data
-            actividad = Actividad(nombre=informacion['nombre'], comision=informacion['comision'])
-            actividad.save()
-            return render(request, "aplicacion/base.html")
-    else:
-        miForm = ActivdadForm()
+class UsuarioDeleteView(DeleteView):
+    model = Usuario
+    success_url = reverse_lazy('usuarios_list')
+    template_name = 'usuarios/usuario_confirm_delete.html'
 
-    return render(request, "aplicacion/actividadForm2.html", {"form":miForm})
 
-def staff(request):
-    return render(request, "aplicacion/staff.html")
+class ModeradorListView(ListView):
+    model = Moderador
+    template_name = 'moderadores/moderadores_list.html'
 
-def buscarComision(request):
-    return render(request, "aplicacion/buscarComision.html")
+class ModeradorDetailView(DetailView):
+    model = Moderador
+    template_name = 'moderadores/moderador_detail.html'
 
-def buscar2(request):
-    if request.GET['comision']:
-        comision = request.GET['comision']
-        actividades = Actividad.objects.filter(comision__icontains=comision)
-        return render(request, 
-                      "aplicacion/resultadosComision.html",
-                      {"comision": comision, "actividades":actividades})
-    return HttpResponse("No se ingresaron datos para buscar")
+class ModeradorCreateView(CreateView):
+    model = Moderador
+    form_class = ModeradorForm
+    template_name = 'moderadores/moderador_form.html'
 
-def buscarStaff(request):
-    if 'staff' in request.GET:
-        staff_query = request.GET['staff']
-        resultados_staff = Staff.objects.filter(apellido__icontains=staff_query)
-        return render(request, "aplicacion/resultados_staff.html", {
-            "staff_query": staff_query,
-            "resultados_staff": resultados_staff,
-        })
-    return HttpResponse("No se ingresaron datos para buscar")
+class ModeradorUpdateView(UpdateView):
+    model = Moderador
+    form_class = ModeradorForm
+    template_name = 'moderadores/moderador_form.html'
 
-def buscarUsuario(request):
-    if 'usuario' in request.GET:
-        usuario_query = request.GET['usuario']
-        resultados_usuarios = Usuario.objects.filter(apellido__icontains=usuario_query)
+class ModeradorDeleteView(DeleteView):
+    model = Moderador
+    success_url = reverse_lazy('moderadores_list')
+    template_name = 'moderadores/moderador_confirm_delete.html'
 
-        return render(request, "aplicacion/resultados_usuarios.html", {
-            "usuario_query": usuario_query,
-            "resultados_usuarios": resultados_usuarios,
-        })
 
-    return HttpResponse("No se ingresaron datos para buscar")
+class JuegoListView(ListView):
+    model = Juego
+    template_name = 'juegos/juegos_list.html'
+
+class JuegoDetailView(DetailView):
+    model = Juego
+    template_name = 'juegos/juego_detail.html'
+
+class JuegoCreateView(CreateView):
+    model = Juego
+    form_class = JuegoForm
+    template_name = 'juegos/juego_form.html'
+
+class JuegoUpdateView(UpdateView):
+    model = Juego
+    form_class = JuegoForm
+    template_name = 'juegos/juego_form.html'
+
+class JuegoDeleteView(DeleteView):
+    model = Juego
+    success_url = reverse_lazy('juegos_list')
+    template_name = 'juegos/juego_confirm_delete.html'

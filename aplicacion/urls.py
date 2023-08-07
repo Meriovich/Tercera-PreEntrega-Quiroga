@@ -1,18 +1,23 @@
-from django.urls import path, include
-from .views import *
+from django.urls import path
+from . import views
+from .forms import UsuarioForm, ModeradorForm, JuegoForm
 
 urlpatterns = [
-    path('', index, name="inicio"),
-    path('usuarios', usuarios, name="usuarios"),
-    path('staff', staff, name="staff"),
-    path('actividades', actividades, name="actividades"),
+    path('usuarios/', views.UsuarioListView.as_view(), name='usuarios_list'),
+    path('usuarios/crear/', views.UsuarioCreateView.as_view(), name='crear_usuario'),
+    path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(), name='detalle_usuario'),
+    path('usuarios/<int:pk>/actualizar/', views.UsuarioUpdateView.as_view(), name='actualizar_usuario'),
+    path('usuarios/<int:pk>/eliminar/', views.UsuarioDeleteView.as_view(), name='eliminar_usuario'),
 
-    path('actividad_form/', actividadForm, name="actividad_form"),
-    path('actividad_form2/', ActividadForm2, name="actividad_form2"),
+    path('moderadores/', views.ModeradorListView.as_view(), name='moderadores_list'),
+    path('moderadores/crear/', views.ModeradorCreateView.as_view(), name='crear_moderador'),
+    path('moderadores/<int:pk>/', views.ModeradorDetailView.as_view(), name='detalle_moderador'),
+    path('moderadores/<int:pk>/actualizar/', views.ModeradorUpdateView.as_view(), name='actualizar_moderador'),
+    path('moderadores/<int:pk>/eliminar/', views.ModeradorDeleteView.as_view(), name='eliminar_moderador'),
 
-    path('buscar_comision/', buscarComision, name="buscar_comision"),   
-    path('buscar2/', buscar2, name="buscar2"),
-
-    path('buscarStaff/', buscarStaff, name="buscarStaff"), 
-    path('buscarUsuario/', buscarUsuario, name="buscarUsuario"), 
+    path('juegos/', views.JuegoListView.as_view(), name='juegos_list'),
+    path('juegos/crear/', views.JuegoCreateView.as_view(), name='crear_juego'),
+    path('juegos/<int:pk>/', views.JuegoDetailView.as_view(), name='detalle_juego'),
+    path('juegos/<int:pk>/actualizar/', views.JuegoUpdateView.as_view(), name='actualizar_juego'),
+    path('juegos/<int:pk>/eliminar/', views.JuegoDeleteView.as_view(), name='eliminar_juego'),
 ]

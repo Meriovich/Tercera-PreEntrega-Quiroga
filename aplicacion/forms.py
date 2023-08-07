@@ -1,19 +1,16 @@
 from django import forms
 
-class ActivdadForm(forms.Form):
-    nombre = forms.CharField(label="Nombre actividad", max_length=50, required=True)
-    comision = forms.IntegerField(label="Comision", required=True)
-    SERVIDORES = (
-        (1, "Arg_"),
-        (2, "Br_"),
-        (3, "US_"),
-    )
-    servidor = forms.ChoiceField(label="Servidor elegido", choices=SERVIDORES, required=True)
+class UsuarioForm(forms.Form):
+    nombre = forms.CharField(label="Nombre de usuario", max_length=50, required=True)
+    correo = forms.EmailField(label="Correo electrónico", max_length=100, required=True)
+    edad = forms.IntegerField(label="Edad", required=True)
 
-class StaffForm(forms.Form):
-    apellido = forms.CharField(label="Apellido Staff", max_length=50, required=True)
-    email = forms.IntegerField(label="Email", required=True)
+class ModeradorForm(forms.Form):
+    nombre = forms.CharField(label="Nombre del moderador", max_length=50, required=True)
+    correo = forms.EmailField(label="Correo electrónico", max_length=100, required=True)
+    area_responsabilidad = forms.CharField(label="Área de responsabilidad", max_length=100, required=True)
 
-class UsuariosForm(form.Form):
-    apellido = forms.CharField(label="Apellido Usuario", max_length=50, required=True)
-    email = forms.IntegerField(label="Email", required=True)
+class JuegoForm(forms.Form):
+    nombre = forms.CharField(label="Nombre del juego", max_length=50, required=True)
+    genero = forms.CharField(label="Género del juego", max_length=50, required=True)
+    plataforma = forms.CharField(label="Plataforma", max_length=50, required=True)
