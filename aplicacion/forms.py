@@ -9,3 +9,11 @@ class ActivdadForm(forms.Form):
         (3, "US_"),
     )
     servidor = forms.ChoiceField(label="Servidor elegido", choices=SERVIDORES, required=True)
+
+class StaffForm(forms.Form):
+    apellido = forms.CharField(label="Apellido Staff", max_length=50, required=True)
+    email = forms.IntegerField(label="Email", required=True)
+
+class UsuariosForm(form.Form):
+    apellido = forms.CharField(label="Apellido Usuario", max_length=50, required=True)
+    email = forms.IntegerField(label="Email", required=True)
