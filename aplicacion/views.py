@@ -5,7 +5,7 @@ from .models import Usuario, Moderador, Juego
 from .forms import UsuarioForm, ModeradorForm, JuegoForm
 
 class IndexView(TemplateView):
-    template_name = 'aplicacion/index.html'
+    template_name = 'aplicacion/base.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,7 +31,7 @@ class UsuarioUpdateView(UpdateView):
 
 class UsuarioDeleteView(DeleteView):
     model = Usuario
-    success_url = reverse_lazy('usuarios_list')
+    success_url = reverse_lazy('aplicacion:usuarios_list')
     template_name = 'usuarios/usuario_confirm_delete.html'
 
 

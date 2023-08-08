@@ -25,12 +25,10 @@
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
             <a class="navbar-brand" href="#!">Inicio</a>
-            <a class="navbar-brand" href="{% url 'usuarios_list' %}">Usuarios</a>
+            <a class="navbar-brand" href="{% url 'aplicacion:usuarios_list' %}">Usuarios</a>
             <a class="navbar-brand" href="{% url 'moderadores_list' %}">Moderadores</a>
             <a class="navbar-brand" href="{% url 'juegos_list' %}">Juegos</a>
             <!-- Otras secciones de navegación -->
-            <a class="btn btn-primary" href="{% url 'buscar_comision' %}">Buscar</a>
-            <a class="btn btn-primary" href="{% url 'admin:index' %}">Administración</a>
         </div>
     </nav>
     <!-- Masthead-->
