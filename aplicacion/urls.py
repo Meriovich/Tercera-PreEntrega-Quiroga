@@ -1,8 +1,14 @@
 from django.urls import path
 from . import views
 from .forms import UsuarioForm, ModeradorForm, JuegoForm
+from django.contrib import admin
+
+app_name = 'aplicacion'
 
 urlpatterns = [
+    path('', views.IndexView.as_view(), name='index'),
+    path('admin/', admin.site.urls),
+
     path('usuarios/', views.UsuarioListView.as_view(), name='usuarios_list'),
     path('usuarios/crear/', views.UsuarioCreateView.as_view(), name='crear_usuario'),
     path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(), name='detalle_usuario'),
